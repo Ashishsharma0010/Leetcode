@@ -1,0 +1,46 @@
+class Solution {
+public:
+    int minFlips(string s) {
+        int n = s.length();
+        string t = s + s;
+        
+        int cost1 = 0; // mismatches vs "010101..."
+        int cost2 = 0; // mismatches vs "101010..."
+        
+        // Initialize first window of size n
+        for (int i = 0; i < n; i++) {
+            int expected1 = i % 2;         // 0,1,0,1...
+            int expected2 = 1 - expected1;  // 1,0,1,0...
+            int c = t[i] - '0';
+            
+            if (c != expected1) cost1++;
+            if (c != expected2) cost2++;
+        }
+        
+        int ans = min(cost1, cost2);
+        
+        for (int i = 1; i < n; i++) {
+           w
+            int left = i - 1;
+            int exp1_left = left % 2;
+            int exp2_left = 1 - exp1_left;
+            int cLeft = t[left] - '0';
+            
+            if (cLeft != exp1_left) cost1--;
+            if (cLeft != exp2_left) cost2--;
+            
+   
+            int right = i + n - 1;
+            int exp1_right = right % 2;
+            int exp2_right = 1 - exp1_right;
+            int cRight = t[right] - '0';
+            
+            if (cRight != exp1_right) cost1++;
+            if (cRight != exp2_right) cost2++;
+            
+            ans = min({ans, cost1, cost2});
+        }
+        
+        return ans;
+    }
+};
