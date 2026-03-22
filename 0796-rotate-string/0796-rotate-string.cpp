@@ -9,15 +9,10 @@ public:
         if(s==goal){
             return true;
         }
-        for(int i=1; i<a; i++){
-            rotate(s.begin(),s.begin()+1,s.end());
-            if(s==goal){
-                return true;
-            }
+        if((s+s).find(goal)!=string::npos){
+            return true;
         }
         return false;
-        // time complexity will be O(N^2) Kyuki ek for loop lgra h or fir ek roatet kr rhe h  n time isliye 
-        // Space complexity will be O(1)
         
     }
 };
